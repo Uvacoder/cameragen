@@ -9,6 +9,7 @@ photos = []
 for article in articles:
     if article.endswith(".jpg") or article.endswith(".png"):
         photos.append(article)
+photos.sort(reverse=True)
 env = Environment(loader = FileSystemLoader("./"))
 template = env.get_template("index.html")
 index_output = open(path + "index.html", "w")
