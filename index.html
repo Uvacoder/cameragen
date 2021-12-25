@@ -5,7 +5,7 @@
   </div>
   {% for photo in photos %}
     <div>
-      <img src="http://localhost:3000/{{ photo }}" alt="img">
+      <img src="{{ address }}{{ photo }}" alt="img">
     </div>
   {% endfor %}
 {% endblock %}
