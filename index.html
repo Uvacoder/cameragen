@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block body %}
   <ul class="navbar">
-    <li class="siteName navItem">
+    <li class="siteName navItem" onclick="scrollToTop()">
       Camera
     </li>
     <li class="navItem">
@@ -29,18 +29,22 @@
   </div>
   <script>
     function visibleInvisible() {
-      photos = document.getElementById("photos");
+      let photos = document.getElementById("photos");
       if (photos.classList.contains("invisible")) {
         photos.classList.remove("invisible");
       } else {
         photos.classList.add("invisible");
       };
-      videos = document.getElementById("videos");
+      let videos = document.getElementById("videos");
       if (videos.classList.contains("invisible")) {
         videos.classList.remove("invisible");
       } else {
         videos.classList.add("invisible");
       };
+    };
+    function scrollToTop() {
+      document.body.scrollTop = 0; // For Safari
+      document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
     };
   </script>
 {% endblock %}
