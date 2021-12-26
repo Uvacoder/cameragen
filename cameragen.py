@@ -36,6 +36,7 @@ for photo in photos:
         img.save(path + "thumbnails/" + photo + ".thumbnail", "JPEG")
 thumbnails = os.listdir(path + "thumbnails")
 thumbnails.sort(reverse=True)
+videos.sort(reverse=True)
 env = Environment(loader = FileSystemLoader("./"))
 template = env.get_template("index.html")
 index_output = open(path + "index.html", "w")
