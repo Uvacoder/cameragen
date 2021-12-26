@@ -23,7 +23,6 @@ photos = []
 for article in articles:
     if article.endswith(".jpg") or article.endswith(".png"):
         photos.append(article)
-photos.sort(reverse=True)
 
 size = 256, 512
 if not os.path.isdir(path + "thumbnails"):
@@ -33,6 +32,7 @@ for photo in photos:
         img.thumbnail(size)
         img.save(path + "thumbnails/" + photo + ".thumbnail", "JPEG")
 thumbnails = os.listdir(path + "thumbnails")
+thumbnails.sort(reverse=True)
 
 env = Environment(loader = FileSystemLoader("./"))
 template = env.get_template("index.html")
