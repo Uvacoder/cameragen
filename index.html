@@ -3,9 +3,11 @@
   <div class="siteNameLink">
     <h1>Camera</h1>
   </div>
-  {% for photo in photos %}
+  {% for thumbnail in thumbnails %}
     <div>
-      <img src="{{ address }}{{ photo }}" alt="img">
+      <a href="{{ address }}{{ thumbnail | replace (".thumbnail","")}}">
+        <img src="{{ address }}thumbnails/{{ thumbnail }}" alt="img">
+      </a>
     </div>
   {% endfor %}
 {% endblock %}
