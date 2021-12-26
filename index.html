@@ -1,8 +1,17 @@
 {% extends "base.html" %}
 {% block body %}
-  <div class="siteNameLink">
-    <h1>Camera</h1>
-  </div>
+  <ul class="navbar">
+    <li class="siteName navItem">
+      Camera
+    </li>
+    <li class="navItem">
+      <button onclick="visibleInvisible()">Photos</button>
+    </li>
+    <li class="navItem">
+      <button onclick="visibleInvisible()">Video</button>
+    </li>
+  </ul>
+  <div id="photos">
   {% for thumbnail in thumbnails %}
     <div>
       <a href="{{ address }}{{ thumbnail | replace (".thumbnail","")}}">
@@ -10,4 +19,28 @@
       </a>
     </div>
   {% endfor %}
+  </div>
+  <div id="videos" class="invisible">
+  {% for video in videos %}
+    <video class="video" width="90%" controls>
+      <source src="{{ address }}{{ video }}" type="video/mp4"></source>
+    </video>
+  {% endfor %}
+  </div>
+  <script>
+    function visibleInvisible() {
+      photos = document.getElementById("photos");
+      if (photos.classList.contains("invisible")) {
+        photos.classList.remove("invisible");
+      } else {
+        photos.classList.add("invisible");
+      };
+      videos = document.getElementById("videos");
+      if (videos.classList.contains("invisible")) {
+        videos.classList.remove("invisible");
+      } else {
+        videos.classList.add("invisible");
+      };
+    };
+  </script>
 {% endblock %}

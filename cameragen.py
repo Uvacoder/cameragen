@@ -20,10 +20,13 @@ with open("conf.json", "r") as conf_file:
     conf_file.close()
 articles = os.listdir(path)
 photos = []
+videos = []
 for article in articles:
     if article.endswith(".jpg") or article.endswith(".png"):
         photos.append(article)
-
+for article in articles:
+    if article.endswith(".mp4"):
+        videos.append(article)
 size = 256, 512
 if not os.path.isdir(path + "thumbnails"):
     os.mkdir(path + "thumbnails")
@@ -33,10 +36,9 @@ for photo in photos:
         img.save(path + "thumbnails/" + photo + ".thumbnail", "JPEG")
 thumbnails = os.listdir(path + "thumbnails")
 thumbnails.sort(reverse=True)
-
 env = Environment(loader = FileSystemLoader("./"))
 template = env.get_template("index.html")
 index_output = open(path + "index.html", "w")
-index_output.write(template.render(photos = photos, address = address, thumbnails = thumbnails))
+index_output.write(template.render(address = address, thumbnails = thumbnails, videos = videos))
 index_output.close()
 shutil.copyfile("styles.css", path + "styles.css")
